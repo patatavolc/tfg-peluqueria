@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdf7ff; /* tono muy suave */
+  padding: 1rem 2.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* --- Logo --- */
+.header__logo h1 {
+  color: #7b0fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* --- Navegación --- */
+.header__nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.header__nav a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.header__nav a:hover {
+  color: #7b0fff;
+}
+
+/* --- Botón --- */
+.login-btn {
+  background-color: #7b0fff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+  background-color: #5e00cc;
+}
