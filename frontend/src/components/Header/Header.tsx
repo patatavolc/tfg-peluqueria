@@ -1,4 +1,5 @@
 import "./Header.css";
+import Button from "../Button/Button.tsx";
 
 export default function Header() {
   return (
@@ -24,7 +25,7 @@ export default function Header() {
         </ul>
 
         <div className="header__actions">
-          <button className="login-btn">Iniciar Sesión</button>
+          <Button text="Iniciar Sesion" />
         </div>
       </nav>
     </header>
