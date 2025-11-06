@@ -1,4 +1,4 @@
-import "./Header.css"
+import "./Header.css";
 
 export default function Header() {
   return (
@@ -9,16 +9,24 @@ export default function Header() {
 
       <nav className="header__nav">
         <ul>
-          <li><a href="#about">Sobre Nosotros</a></li>
-          <li><a href="#services">Servicios</a></li>
-          <li><a href="#products">Productos</a></li>
-          <li><a href="#contact">Contacto</a></li>
+          <li>
+            <a href="#about">Sobre Nosotros</a>
+          </li>
+          <li>
+            <a href="#services">Servicios</a>
+          </li>
+          <li>
+            <a href="#products">Productos</a>
+          </li>
+          <li>
+            <a href="#contact">Contacto</a>
+          </li>
         </ul>
-      </nav>
 
-      <div className="header__actions">
-        <button className="login-btn">Iniciar Sesión</button>
-      </div>
+        <div className="header__actions">
+          <button className="login-btn">Iniciar Sesión</button>
+        </div>
+      </nav>
     </header>
-  )
+  );
 }
