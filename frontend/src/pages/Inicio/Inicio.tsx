@@ -27,7 +27,7 @@ export default function Inicio() {
     },
   ];
   return (
-    <div>
+    <div className="home__content">
       <Header />
 
       <section className="hero">
