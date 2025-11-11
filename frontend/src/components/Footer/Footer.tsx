@@ -15,7 +15,7 @@ export default function Footer() {
         </nav>
         <div className="footer__socials">
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/peluqueria.fressas"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -36,7 +36,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/fressaspeluqueria"
             target="_blank"
             rel="noopener noreferrer"
           >
