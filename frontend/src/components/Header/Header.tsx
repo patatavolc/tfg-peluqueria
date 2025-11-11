@@ -1,5 +1,6 @@
 import "./Header.css";
 import Button from "../Button/Button.tsx";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -11,16 +12,16 @@ export default function Header() {
       <nav className="header__nav">
         <ul>
           <li>
-            <a href="#about">Sobre Nosotros</a>
+            <Link to="/src/pages/About/About.tsx">Sobre Nosotros</Link>
           </li>
           <li>
-            <a href="#services">Servicios</a>
+            <Link to="/src/pages/Services/Services.tsx">Servicios</Link>
           </li>
           <li>
-            <a href="#products">Productos</a>
+            <Link to="/src/pages/Products/Products.tsx">Productos</Link>
           </li>
           <li>
-            <a href="#contact">Contacto</a>
+            <Link to="/src/pages/Services/Contact.tsx">Contacto</Link>
           </li>
         </ul>
 
