@@ -1,10 +1,48 @@
+/**
+ * TeamMemberCard Component
+ *
+ * Tarjeta para mostrar miembros del equipo con foto, nombre y cargo.
+ * Incluye imagen placeholder por defecto y manejo de errores de carga.
+ *
+ * @example
+ * // Con imagen
+ * <TeamMemberCard
+ *   name="María José"
+ *   job="Peluquera Senior"
+ *   image="/images/maria.jpg"
+ * />
+ *
+ * @example
+ * // Sin imagen (usa placeholder automático)
+ * <TeamMemberCard
+ *   name="Claudia"
+ *   job="Esteticista"
+ * />
+ *
+ * @example
+ * // Múltiples miembros en grid
+ * <Grid columns={3}>
+ *   {teamMembers.map((member, index) => (
+ *     <TeamMemberCard
+ *       key={index}
+ *       name={member.name}
+ *       job={member.job}
+ *       image={member.image}
+ *     />
+ *   ))}
+ * </Grid>
+ */
+
 import "./TeamMemberCard.css";
-import placeholder from "../../assets/placeholder.png"; // importa el asset
+import placeholder from "../../assets/placeholder.png";
 
 interface TeamMemberCardProps {
+  /** Nombre del miembro del equipo */
   name: string;
+  /** Cargo o puesto del miembro */
   job: string;
-  image?: string; // ahora opcional
+  /** URL de la foto (opcional, usa placeholder si no se proporciona) */
+  image?: string;
 }
 
 export default function TeamMemberCard({
@@ -12,7 +50,7 @@ export default function TeamMemberCard({
   job,
   image,
 }: TeamMemberCardProps) {
-  const src = image || placeholder; // fallback si no viene o es undefined
+  const src = image || placeholder;
 
   return (
     <div className="team-member-card">
@@ -22,7 +60,7 @@ export default function TeamMemberCard({
         className="team-member-card__image"
         onError={(e) => {
           e.currentTarget.src = placeholder;
-        }} // fallback si falla carga
+        }}
       />
       <div className="team-member-card__content">
         <p className="team-member-card__name">{name}</p>

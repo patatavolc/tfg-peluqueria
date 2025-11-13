@@ -1,0 +1,45 @@
+.icon-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.icon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(162, 77, 241, 0.1);
+}
+
+.icon-card__icon {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(162, 77, 241, 0.1);
+  border-radius: 50%;
+}
+
+.icon-card__icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.icon-card__description {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

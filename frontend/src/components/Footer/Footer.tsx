@@ -1,3 +1,29 @@
+/**
+ * Footer Component
+ *
+ * Pie de página de la aplicación con información de contacto, enlaces legales
+ * y redes sociales.
+ *
+ * Incluye:
+ * - Enlaces de navegación (Política de privacidad, etc.)
+ * - Dirección física del negocio
+ * - Teléfono de contacto
+ * - Enlaces a redes sociales (Facebook, Instagram)
+ * - Texto de copyright
+ *
+ * @example
+ * // Uso en Layout
+ * <Layout>
+ *   <Header />
+ *   <main>{children}</main>
+ *   <Footer />
+ * </Layout>
+ *
+ * Nota: Para actualizar información de contacto o redes sociales,
+ * edita directamente este componente o considera moverlos a un
+ * archivo de configuración centralizado.
+ */
+
 import "./Footer.css";
 
 export default function Footer() {

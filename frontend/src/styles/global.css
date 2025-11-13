@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap");
 :root {
   /*  Colores principales */
   --color-primary: #a24df1;
@@ -32,7 +32,7 @@
 
 body {
   font-family: var(--font-main);
-  background-color: var(--color-bg);
+  background-color: var(--color-secondary);
   color: var(--color-text);
   line-height: 1.6;
 }
