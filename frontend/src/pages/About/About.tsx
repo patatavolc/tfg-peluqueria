@@ -1,7 +1,37 @@
 import "./About.css";
 import Header from "../../components/Header/Header.tsx";
+import Footer from "../../components/Footer/Footer.tsx";
+import TeamMemberCard from "../../components/TeamMemberCard/TeamMembeCard.tsx";
+import ImageGrid from "../../components/ImageGrid/ImageGrid.tsx";
+import placeholder from "../../assets/placeholder.png";
 
 export default function About() {
+  const workers = [
+    {
+      name: "Mariajo",
+      job: "Peluquera",
+      image: "",
+    },
+    {
+      name: "Claudia",
+      job: "Peluquera y Esteticista",
+      image: "",
+    },
+    {
+      name: "Judith",
+      job: "Masajista",
+      image: "",
+    },
+  ];
+
+  const gallery = [
+    placeholder,
+    placeholder,
+    placeholder,
+    placeholder,
+    placeholder,
+  ];
+
   return (
     <div className="about__content">
       <Header />
@@ -121,9 +151,27 @@ export default function About() {
         </div>
       </section>
 
-      <section className="team-members">
-        
+      <section className="team-members-section">
+        <p className="team-members__title">Conoce a nuestro equipo</p>
+        <div className="team-members__card__container">
+          {workers.map((worker, index) => (
+            <TeamMemberCard
+              key={index}
+              name={worker.name}
+              job={worker.job}
+              image={worker.image}
+            />
+          ))}
+        </div>
       </section>
+
+      <section className="salon-section">
+        <div className="salon-section__content">
+          <h2>Nuestro Salon</h2>
+          <ImageGrid images={gallery} />
+        </div>
+      </section>
+      <Footer />
     </div>
   );
 }

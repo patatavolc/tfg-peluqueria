@@ -2,7 +2,7 @@ import Header from "../../components/Header/Header.tsx";
 import Button from "../../components/Button/Button.tsx";
 import ServiceCard from "../../components/ServiceCard/ServiceCard.tsx";
 import Footer from "../../components/Footer/Footer.tsx";
-import "./Inicio.css"
+import "./Inicio.css";
 
 import service1Image from "../../assets/serviceCardsImages/service1.jpg";
 import service2Image from "../../assets/serviceCardsImages/service2.jpg";

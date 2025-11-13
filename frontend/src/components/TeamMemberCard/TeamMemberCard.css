@@ -1,0 +1,17 @@
+.team-member-card {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+.team-member-card__image {
+  width: 100px;
+  height: 100px;
+}
+
+.team-member-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
