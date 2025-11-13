@@ -1,5 +1,5 @@
 .home__content {
-  background:  var(--color-bg);
+  background: var(--color-secondary);
   min-height: 100vh;
 }
 
@@ -25,7 +25,7 @@
   text-align: center;
 }
 
-.service-section__title { 
+.service-section__title {
   font-size: 2rem;
   color: var(--color-primary);
   margin-bottom: 2rem;
