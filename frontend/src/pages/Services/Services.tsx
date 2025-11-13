@@ -30,11 +30,6 @@ export default function Services() {
   return (
     <Layout>
       <div className="services__content">
-        <Hero
-          title="Nuestros Servicios"
-          subtitle="Descubre la amplia gama de servicios profesionales que ofrecemos para realzar tu belleza"
-        />
-
         <Section centered>
           <Filter
             title="Explora por Categoría"
