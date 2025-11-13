@@ -5,6 +5,7 @@
   text-align: center;
   padding: 2rem;
   background-color: var(--color-secondary);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius);
   transition: var(--transition);
 }

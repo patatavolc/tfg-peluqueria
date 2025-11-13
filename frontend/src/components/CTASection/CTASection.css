@@ -1,10 +1,5 @@
 .cta-section {
   padding: 4rem 1rem;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 100%
-  );
   text-align: center;
 }
 
@@ -15,22 +10,15 @@
 
 .cta-section__title {
   font-size: 2rem;
-  color: white;
+  font-style: bold;
   margin-bottom: 1rem;
   font-weight: 700;
 }
 
 .cta-section__description {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
   line-height: 1.6;
-}
-
-.cta-section button {
-  background-color: white;
-  color: var(--color-primary);
-  font-weight: 600;
 }
 
 .cta-section button:hover {
