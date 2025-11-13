@@ -1,0 +1,36 @@
+.filter-section {
+  padding: 20px;
+}
+
+.filter-section__title{
+  font-size: 2em;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.filter-section__nav {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.filter-section__nav .filter-btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  color: #555;
+
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.filter-section__nav .filter-btn.active {
+  background-color: #e6d8ff;
+  color: #4a0080;
+  font-weight: 600;
+}

@@ -1,0 +1,31 @@
+.services__content {
+  min-height: 100vh;
+}
+
+.services__results {
+  margin-top: 3rem;
+}
+
+.services__count {
+  text-align: center;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.services__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Responsive - una columna en móviles */
+@media (max-width: 968px) {
+  .services__list {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}
