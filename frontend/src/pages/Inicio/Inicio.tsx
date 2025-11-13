@@ -5,6 +5,7 @@ import Grid from "../../components/Grid/Grid.tsx";
 import ServiceCard from "../../components/ServiceCard/ServiceCard.tsx";
 import "./Inicio.css";
 import { services } from "../../data/services.ts";
+import homeBackground from "../../assets/home.png";
 
 export default function Inicio() {
   const handleReservation = () => {
@@ -17,6 +18,7 @@ export default function Inicio() {
         <Hero
           title="Tu Estilo, Nuestra Pasión"
           subtitle="Bienvenidos a Fressas Peluquería. Somos un equipo de estilistas apasionados por el cabello y dedicados a que te veas y te sientas lo mejor posible"
+          backgroundImage={homeBackground}
           ctaText="Reservar Cita"
           onCtaClick={handleReservation}
         />

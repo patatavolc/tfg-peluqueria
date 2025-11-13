@@ -2,11 +2,34 @@
   text-align: center;
   padding: 4rem 1rem;
   background-color: var(--color-secondary);
+  position: relative;
+}
+
+/* Hero con imagen de fondo */
+.hero--with-bg {
+  background-color: transparent;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Textos en blanco cuando hay imagen de fondo */
+.hero--with-bg .hero__title {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero--with-bg .hero__subtitle {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .hero__content {
   max-width: 800px;
   margin: 0 auto;
+  z-index: 1;
+  position: relative;
 }
 
 .hero__title {
@@ -31,5 +54,9 @@
 
   .hero__subtitle {
     font-size: 1rem;
+  }
+
+  .hero--with-bg {
+    min-height: 300px;
   }
 }

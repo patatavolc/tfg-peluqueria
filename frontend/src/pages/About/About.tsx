@@ -11,6 +11,7 @@ import CTASection from "../../components/CTASection/CTASection.tsx";
 import placeholder from "../../assets/placeholder.png";
 import { teamMembers } from "../../data/team.ts";
 import { features } from "../../data/features.tsx";
+import aboutBackground from "../../assets/about.png";
 
 export default function About() {
   const gallery = [
@@ -31,6 +32,7 @@ export default function About() {
         <Hero
           title="Sobre Nosotros"
           subtitle="Dedicados a realzar tu belleza con pasión y profesionalismo."
+          backgroundImage={aboutBackground}
         />
 
         <Quote
