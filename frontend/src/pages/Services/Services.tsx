@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Layout from "../Layout/Layout.tsx";
-import Hero from "../../components/Hero/Hero.tsx";
 import Section from "../../components/Section/Section.tsx";
 import Filter from "../../components/Filter/Filter.tsx";
 import ServiceHorizontalCard from "../../components/ServiceHorizontalCard/ServiceHorizontalCard.tsx";
