@@ -2,19 +2,31 @@ import Button from "../Button/Button.tsx";
 import "./ProductCard.css";
 
 interface ProductCardProps {
+  id: number;
   title: string;
   description: string;
   price: number;
   imageUrl: string;
   statement: string;
+  stock: number;
+  onAddToCart: (id: number) => void;
 }
 export default function ProductCard({
+  id,
   title,
   description,
   price,
   imageUrl,
   statement,
+  stock,
+  onAddToCart,
 }: ProductCardProps) {
+  const handleAddToCart = () => {
+    if (stock > 0) {
+      onAddToCart(id);
+    }
+  };
+
   return (
     <div className="product-card">
       <img src={imageUrl} alt={title} className="product-card__image" />
@@ -31,7 +43,11 @@ export default function ProductCard({
             {statement}
           </p>
         </div>
-        <Button text="Añadir al carrito" />
+        <Button
+          text={stock === 0 ? "Sin stock" : "Añadir al carrito"}
+          onClick={handleAddToCart}
+          disabled={stock === 0}
+        />
       </div>
     </div>
   );

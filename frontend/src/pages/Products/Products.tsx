@@ -9,6 +9,7 @@ import "./Products.css";
 export default function Products() {
   const [activeFilter, setActiveFilter] = useState("Todos");
   const [cart, setCart] = useState<number[]>([]);
+  const [cartPulse, setCartPulse] = useState(false);
 
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter);
@@ -16,6 +17,8 @@ export default function Products() {
 
   const addToCart = (productId: number) => {
     setCart([...cart, productId]);
+    setCartPulse(true);
+    setTimeout(() => setCartPulse(false), 300);
     console.log(`Producto ${productId} añadido al carrito`);
   };
 
@@ -36,7 +39,9 @@ export default function Products() {
           />
 
           <button
-            className="products__cart-button"
+            className={`products__cart-button ${
+              cartPulse ? "products__cart-button--pulse" : ""
+            }`}
             aria-label="Carrito de compras"
           >
             <svg
@@ -64,11 +69,14 @@ export default function Products() {
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
+              id={product.id}
               title={product.name}
               description={product.description}
               price={product.price}
               imageUrl={product.image}
               statement={getStockMessage(product.stock)}
+              stock={product.stock}
+              onAddToCart={addToCart}
             />
           ))}
         </div>
