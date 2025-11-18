@@ -1,0 +1,27 @@
+/* ...existing code... */
+
+.titleAndSubtitle-content {
+  width: 100%;
+}
+
+.titleAndSubtitle--center {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleAndSubtitle--left {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.titleAndSubtitle--right {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Opcional: ajustes para título y subtítulo si necesitas */
+.titleAndSubtitle-title,
+.titleAndSubtitle-subtitle {
+  margin: 0;
+}
