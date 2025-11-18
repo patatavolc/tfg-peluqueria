@@ -37,8 +37,6 @@
  * - Si se pasan varias props (e.g. centered y right), se aplicará solo la de mayor prioridad.
  * - Las clases de alineación se gestionan por CSS (ver TitleAndSubtitle.css).
  */
-
-
 import "./TitleAndSubtitle.css";
 
 interface TitleAndSubtitleProps {
