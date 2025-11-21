@@ -1,0 +1,18 @@
+.contact-info__content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-info__info {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 6px;
+}
+.contact-info__icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-primary);
+}
