@@ -1,15 +1,27 @@
 import "./selectGenre.css";
+import { useState } from "react";
 
 export default function SelectGenre() {
+  const [selected, setSelected] = useState<"Mujer" | "Hombre" | null>(null);
+
+  const handleSelect = (value: "Mujer" | "Hombre") => {
+    setSelected((prev) => (prev === value ? null : value));
+  };
+
   return (
     <div className="select-genre__content">
       <h2>Indicanos para quien es la cita</h2>
       <div className="select-genre__selection">
-        <div className="select-genre__item">
+        <button
+          type="button"
+          aria-pressed={selected === "Mujer"}
+          className={`select-genre__item ${
+            selected === "Mujer" ? "selected" : ""
+          }`}
+          onClick={() => handleSelect("Mujer")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
             viewBox="0 0 24 24"
             fill="currentColor"
           >
@@ -18,12 +30,18 @@ export default function SelectGenre() {
             <path d="M12 1a3 3 0 1 1 -3 3l.005 -.176a3 3 0 0 1 2.995 -2.824" />
           </svg>
           <p>Mujer</p>
-        </div>
-        <div className="select-genre__item">
+        </button>
+
+        <button
+          type="button"
+          aria-pressed={selected === "Hombre"}
+          className={`select-genre__item ${
+            selected === "Hombre" ? "selected" : ""
+          }`}
+          onClick={() => handleSelect("Hombre")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
             viewBox="0 0 24 24"
             fill="currentColor"
           >
@@ -32,7 +50,7 @@ export default function SelectGenre() {
             <path d="M12 1a3 3 0 1 1 -3 3l.005 -.176a3 3 0 0 1 2.995 -2.824" />
           </svg>
           <p>Hombre</p>
-        </div>
+        </button>
       </div>
     </div>
   );
