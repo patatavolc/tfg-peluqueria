@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout.tsx";
 import Section from "../../components/Section/Section.tsx";
 import Filter from "../../components/Filter/Filter.tsx";
 import ServiceHorizontalCard from "../../components/ServiceHorizontalCard/ServiceHorizontalCard.tsx";
 import "./Services.css";
 import { servicesForSection } from "../../data/servicesForSection.ts";
+import { routes } from "../../data/routes.ts";
 
 export default function Services() {
   const [activeFilter, setActiveFilter] = useState("Todos");
+  const navigate = useNavigate();
 
   // Obtener categorías únicas de los servicios
   const categories = [
@@ -22,8 +25,10 @@ export default function Services() {
       : servicesForSection.filter((service) => service.type === activeFilter);
 
   const handleReserve = (serviceId: number) => {
-    console.log(`Reservando servicio ID: ${serviceId}`);
-    // Aquí iría la lógica de reserva (modal, navegación, etc.)
+    // navegación a la página de reservas, pasando el id (como query param)
+    navigate(`${routes.reservas}?serviceId=${serviceId}`);
+    // Alternativa usando state:
+    // navigate(routes.reservas, { state: { serviceId } });
   };
 
   return (

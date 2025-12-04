@@ -4,6 +4,7 @@ export const routes = {
   services: "/services",
   products: "/products",
   contact: "/contact",
+  reservas: "/reservas"
 };
 
 export const navItems = [
