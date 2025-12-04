@@ -1,0 +1,9 @@
+form {
+  background: var(--color-bg);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 20px;
+}
+/* TODO: Estilar el formulario de contacto + hacer funcional el formulario */

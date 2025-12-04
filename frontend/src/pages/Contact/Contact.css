@@ -1,7 +1,8 @@
-.contact-text-section {
-  padding: 4rem 1rem;
-}
-
 .title {
   margin-left: 4rem;
+}
+
+.map-with-form {
+  display: flex;
+  gap: 15rem;
 }

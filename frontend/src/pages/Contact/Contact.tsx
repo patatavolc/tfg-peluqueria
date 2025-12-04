@@ -20,11 +20,13 @@ export default function Contact() {
         tlfNumber="876 51 56 57"
         email="contacto@fressas.com"
       />
-      <MapEmbed
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5755.564751189001!2d-0.8899703013333072!3d41.6771938538499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914a065e9c2a1%3A0xa7aaff5ff5fb86fa!2sFressas!5e1!3m2!1ses!2ses!4v1764847054562!5m2!1ses!2ses"
-        title="Fressas Peluqueria"
-      />
-      <ContactForm title="Envianos un mensaje" />
+      <div className="map-with-form">
+        <MapEmbed
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5755.564751189001!2d-0.8899703013333072!3d41.6771938538499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914a065e9c2a1%3A0xa7aaff5ff5fb86fa!2sFressas!5e1!3m2!1ses!2ses!4v1764847054562!5m2!1ses!2ses"
+          title="Fressas Peluqueria"
+        />
+        <ContactForm title="Envianos un mensaje" />
+      </div>
     </Layout>
   );
 }
