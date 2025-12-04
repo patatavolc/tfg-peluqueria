@@ -5,5 +5,40 @@ form {
   flex-direction: column;
   justify-content: start;
   padding: 20px;
+  border-radius: 15px;
+  font-size: 25px;
 }
-/* TODO: Estilar el formulario de contacto + hacer funcional el formulario */
+.contact-form__content {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.contact-form__labels {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+input {
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
+  background: var(--input-bg);
+  padding: 10px;
+
+  font-size: 17px;
+}
+
+textarea {
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
+  background: var(--input-bg);
+  height: 150px;
+  margin-bottom: 15px;
+}

@@ -22,6 +22,9 @@
   /*  Extras */
   --radius: 8px;
   --transition: all 0.3s ease;
+
+  --input-bg: #d6d6d6;
+  --input-border: #a6a6a6;
 }
 
 * {
