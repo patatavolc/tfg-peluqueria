@@ -7,11 +7,13 @@ import ContactForm from "../../components/ContactForm/ContactForm.tsx";
 export default function Contact() {
   return (
     <Layout>
-      <TitleAndSubtitle
-        title="Contactanos"
-        subtitle="Nos encantaria saber de ti. Ponte en contacto con nosotros utilizndo la informacion a continuacion o rellenando el formulario de contacto"
-        left
-      />
+      <div className="title">
+        <TitleAndSubtitle
+          title="Contactanos"
+          subtitle="Nos encantaria saber de ti. Ponte en contacto con nosotros utilizndo la informacion a continuacion o rellenando el formulario de contacto"
+          left
+        />
+      </div>
 
       <ContactInfo
         address="C. de Jose Maria Beltran, 50018 Zaragoza"
