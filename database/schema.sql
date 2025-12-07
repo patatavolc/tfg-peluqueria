@@ -21,7 +21,7 @@ CREATE TABLE usuarios (
 
 CREATE TABLE servicios (
   id SERIAL PRIMARY KEY,
-  titulo VARCHAR(100) NOT NLL,
+  titulo VARCHAR(100) NOT NULL,
   descripcion TEXT,
   precio NUMERIC(10, 2) NOT NULL,
   duracion_minutos INTEGER NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE servicios (
 );
 
 CREATE TABLE productos (
-  id SERIL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   marca VARCHAR(100),
   categoria VARCHAR(50) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE productos (
   stock INTEGER NOT NULL DEFAULT 0,
   url_imagen VARCHAR(255),
   destacado BOOLEAN DEFAULT FALSE,
-  creado_en TIMESTAMPTZ NOT NULL DEFAUL CURRENT_TIMESTAMP
+  creado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE citas (
