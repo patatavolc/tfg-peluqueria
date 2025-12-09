@@ -29,3 +29,33 @@ CREATE TRIGGER trigger_descontar_stock
 AFTER INSERT ON detalles_factura
 FOR EACH ROW
 EXECUTE FUNCTION trigger_descontar_stock();
+
+-- Vista para el dashboard de inventario
+-- Genera un sku falso y la etiqueta de estado automaticamente 
+-- EJ: FP-SH-001
+DROP VIEW IF EXISTS vista_dashboard_productos;
+CREATE VIEW vista_dashboard_productos AS
+SELECT
+  p.id,
+  p.url_imagen,
+  p.nombre,
+  p.marca,
+  p.categoria,
+  p.precio,
+  p.stock,
+
+  'FP-' || UPPER(SUBSTRING(p.categoria, 1, 2)) || '-' || LPAD(p.id::text, 3, '0') AS sku,
+
+  CASE 
+    WHEN p.stock = 0 THEN 'Sin Stock'
+    WHEN p.stock <= 5 THEN 'Bajo Stock'
+    ELSE 'En Stock'
+  END AS estado_texto,
+
+  CASE 
+    WHEN p.stock = 0 THEN 'error'
+    WHEN p.stock <= 5 THEN 'warning'
+    ELSE 'success'
+  END AS estado_color
+FROM productos p
+ORDER BY p.nombre ASC;
