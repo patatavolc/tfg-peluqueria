@@ -1,7 +1,10 @@
+DROP TABLE IF EXISTS detalles_factura CASCADE; 
+DROP TABLE IF EXISTS facturas CASCADE;         
 DROP TABLE IF EXISTS citas CASCADE;
 DROP TABLE IF EXISTS productos CASCADE;
 DROP TABLE IF EXISTS servicios CASCADE;
 DROP TABLE IF EXISTS usuarios CASCADE;
+
 
 CREATE TABLE usuarios (
   id SERIAL PRIMARY KEY,
@@ -55,5 +58,43 @@ CREATE TABLE citas (
   creado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+
+CREATE TABLE facturas (
+  id SERIAL PRIMARY KEY,
+  
+  cliente_id INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE RESTRICT,
+  
+  codigo_factura VARCHAR(20) UNIQUE NOT NULL, 
+  
+  fecha_emision TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  fecha_vencimiento TIMESTAMPTZ,
+  
+  total NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
+  
+  estado VARCHAR(15) NOT NULL DEFAULT 'PENDIENTE',
+  CHECK (estado IN ('PENDIENTE', 'PAGADA', 'VENCIDA', 'CANCELADA')),
+  
+  metodo_pago VARCHAR(50), 
+  
+  creado_en TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE detalles_factura (
+  id SERIAL PRIMARY KEY,
+  factura_id INTEGER NOT NULL REFERENCES facturas(id) ON DELETE CASCADE,
+  
+  cita_id INTEGER REFERENCES citas(id) ON DELETE SET NULL,
+  
+  producto_id INTEGER REFERENCES productos(id) ON DELETE SET NULL,
+  
+  concepto VARCHAR(255) NOT NULL,
+  
+  cantidad INTEGER NOT NULL DEFAULT 1,
+  precio_unitario NUMERIC(10, 2) NOT NULL,
+  subtotal NUMERIC(10, 2) NOT NULL
+);
+
 CREATE INDEX idx_citas_empleado_tiempo ON citas (empleado_id, fecha_hora_inicio);
 CREATE INDEX idx_citas_cliente ON citas (cliente_id);
+CREATE INDEX idx_facturas_cliente ON facturas (cliente_id);
+CREATE INDEX idx_facturas_fecha ON facturas (fecha_emision);
