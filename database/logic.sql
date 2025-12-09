@@ -59,3 +59,26 @@ SELECT
   END AS estado_color
 FROM productos p
 ORDER BY p.nombre ASC;
+
+-- VIsta para el dashboard de servicios
+-- Muestra servicios y concatena losn ombres de los peluqueros que lo realizan
+DROP VIEW IF EXISTS vista_dashboard_servicios;
+
+CREATE VIEW vista_dashboard_servicios AS
+SELECT
+  s.id,
+  s.titulo AS nombre_servicio,
+  s.duracion_minutos || ' min' AS duracion_formateada,
+  s.precio,
+  s.categoria,
+
+  -- Se usa el historial para ver el peluquero que ha hecho el servicio
+  COALESCE(
+    (SELECT STRING_AGG(DISTINCT u.nombre, ', ')
+    FROM citas c
+    JOIN usuarios u ON c.empleado_id = u.id
+    WHERE c.servicio_id = s.id),
+    'Todos'
+  ) AS peluqueros_asignados
+FROM servicios s
+ORDER BY s.titulo ASC;
