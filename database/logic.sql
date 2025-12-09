@@ -72,7 +72,7 @@ SELECT
   s.precio,
   s.categoria,
 
-  -- Se usa el historial para ver el peluquero que ha hecho el servicio
+  -- SUBCONSULTA. Se usa el historial para ver el peluquero que ha hecho el servicio
   COALESCE(
     (SELECT STRING_AGG(DISTINCT u.nombre, ', ')
     FROM citas c
@@ -82,3 +82,26 @@ SELECT
   ) AS peluqueros_asignados
 FROM servicios s
 ORDER BY s.titulo ASC;
+
+-- Vista para el dashboard de facturas
+DROP VIEW IF EXISTS vista_dashboard_facturas;
+
+CREATE VIEW vista_dashboard_facturas AS
+SELECT
+  f.id,
+  f.codigo_factura,
+  TO_CHAR(f.fecha_emision, 'DD/MM/YYYY') AS fecha_formateada,
+  u.nombre AS cliente,
+  f.total,
+  f.estado
+
+  -- Color 
+  CASE 
+    WHEN f.estado = 'PAGADA' THEN 'success'
+    WHEN f.estado = 'PENDIENTE' THEN 'warning'
+    WHEN f.estado = 'VENCIDA' OR f.estado = 'CANCELADA' THEN 'error'
+    ELSE 'default'
+  END AS estado_color
+FROM facturas f 
+JOIN usuarios u ON f.cliente_id = u.id
+ORDER BY f.fecha_emision DESC;
