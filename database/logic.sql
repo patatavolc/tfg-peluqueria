@@ -1,6 +1,6 @@
 -- Function y trigger para actualizar el timestamp
 CREATE OR REPLACE FUNCTION actualizar_timestamp()
-RETURN TRIGGER AS $$
+RETURNS TRIGGER AS $$
 BEGIN
   NEW.actualizado_en = NOW();
   RETURN NEW;
@@ -14,12 +14,12 @@ EXECUTE FUNCTION actualizar_timestamp();
 
 -- Funcion y trigger para descontar stock automaticamente
 CREATE OR REPLACE FUNCTION descontar_stock()
-RETURN TRIGGER AS $$
+RETURNS TRIGGER AS $$
 BEGIN 
   IF NEW.producto_id IS NOT NULL THEN
     UPDATE Productos
     SET stock = stock - NEW.cantidad
-    WHERE id = NEW.producto_id
+    WHERE id = NEW.producto_id;
   END IF;
   RETURN NEW;
 END;
@@ -28,7 +28,7 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER trigger_descontar_stock
 AFTER INSERT ON detalles_factura
 FOR EACH ROW
-EXECUTE FUNCTION trigger_descontar_stock();
+EXECUTE FUNCTION descontar_stock();
 
 -- Vista para el dashboard de inventario
 -- Genera un sku falso y la etiqueta de estado automaticamente 
@@ -61,7 +61,7 @@ FROM productos p
 ORDER BY p.nombre ASC;
 
 -- VIsta para el dashboard de servicios
--- Muestra servicios y concatena losn ombres de los peluqueros que lo realizan
+-- Muestra servicios y concatena los nombres de los peluqueros que lo realizan
 DROP VIEW IF EXISTS vista_dashboard_servicios;
 
 CREATE VIEW vista_dashboard_servicios AS
@@ -93,7 +93,7 @@ SELECT
   TO_CHAR(f.fecha_emision, 'DD/MM/YYYY') AS fecha_formateada,
   u.nombre AS cliente,
   f.total,
-  f.estado
+  f.estado,
 
   -- Color 
   CASE 
