@@ -5,31 +5,31 @@ export interface Usuario {
   nombre: string;
   email: string;
   telefono?: string;
-  password?: string;
-  rol: "CLIENTE" | "EMPLEDO" | "ADMIN";
+  password_hash?: string;
+  rol: "CLIENTE" | "EMPLEADO" | "ADMIN";
   creado_en?: Date;
   actualizado_en?: Date;
 }
 
 export const newUser = async (data: Usuario) => {
-  const { nombre, email, telefono, password, rol = "CLIENTE" } = data;
+  const { nombre, email, telefono, password_hash, rol = "CLIENTE" } = data;
 
   const query = `
-  INSERT INTO usuarios (nombre, email, telefono, password, rol)
+  INSERT INTO usuarios (nombre, email, telefono, password_hash, rol) 
   VALUES($1, $2, $3, $4, $5)
   RETURNING *
   `;
 
-  const values = [nombre, email, telefono, password, rol];
+  const values = [nombre, email, telefono, password_hash, rol];
   const result = await pool.query(query, values);
 
   return result.rows[0];
 };
 
 export const getAllUsers = async () => {
-  const query = `SELECT id, nombre, email, telefono, rol, creado_en FROM usuarios ORDER BY creadoen DESC`;
+  const query = `SELECT id, nombre, email, telefono, rol, creado_en FROM usuarios ORDER BY creado_en DESC`;
   const result = await pool.query(query);
-  return result.rows[0];
+  return result.rows;
 };
 
 export const getUserById = async (id: number) => {
@@ -69,9 +69,9 @@ export const updateUser = async (id: number, data: Partial<Usuario>) => {
     fields.push(`telefono = $${paramCount++}`);
     values.push(data.telefono);
   }
-  if (data.password) {
-    fields.push(`password = $${paramCount++}`);
-    values.push(data.password);
+  if (data.password_hash) {
+    fields.push(`password_hash = $${paramCount++}`);
+    values.push(data.password_hash);
   }
   if (data.rol) {
     fields.push(`rol = $${paramCount++}`);
@@ -85,7 +85,7 @@ export const updateUser = async (id: number, data: Partial<Usuario>) => {
   values.push(id);
   const query = `
     UPDATE usuarios
-    SER ${fields.join(", ")}
+    SET ${fields.join(", ")} 
     WHERE id = $${paramCount}
     RETURNING id, nombre, email, telefono, rol, actualizado_en
   `;

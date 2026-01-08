@@ -7,7 +7,6 @@ import {
   getUserByTelefono,
   updateUser,
 } from "../services/usuarios.service";
-import { error } from "node:console";
 
 export const createUsuario = async (
   req: Request,
