@@ -3,6 +3,7 @@ import {
   newUser,
   getAllUsers,
   getUserById,
+  getUserByEmail,
   getUserByTelefono,
   updateUser,
 } from "../services/usuarios.service";
@@ -48,6 +49,25 @@ export const getUsuarioById = async (
   try {
     const { id } = req.params;
     const user = await getUserById(parseInt(id));
+
+    if (!user) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getUsuarioByEmail = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { email } = req.params;
+    const user = await getUserByEmail(email);
 
     if (!user) {
       return res.status(404).json({ error: "Usuario no encontrado" });
