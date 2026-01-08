@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { newUser } from "../services/usuarios.service.tsx";
+import { newUser, getAllUsers } from "../services/usuarios.service.tsx";
 
 export const createUsuario = async (
   req: Request,
@@ -15,6 +15,19 @@ export const createUsuario = async (
 
     const createUser = await newUser(data);
     res.status(201).json(createUser);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getUsuarios = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const users = await getAllUsers();
+    res.status(200).json(users);
   } catch (error) {
     next(error);
   }
