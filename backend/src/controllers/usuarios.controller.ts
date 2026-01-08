@@ -5,7 +5,7 @@ import {
   getUserById,
   getUserByTelefono,
   updateUser,
-} from "../services/usuarios.service.tsx";
+} from "../services/usuarios.service";
 import { error } from "node:console";
 
 export const createUsuario = async (
