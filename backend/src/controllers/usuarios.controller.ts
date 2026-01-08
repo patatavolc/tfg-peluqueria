@@ -1,17 +1,23 @@
+import { Request, Response, NextFunction } from "express";
+import { newUser } from "../services/usuarios.service.tsx";
+
 export const createUsuario = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const data = req.body;
+  try {
+    const data = req.body;
 
-  if (data.id) {
-    newUser(data)
-      .then((createUser) => {
-        res.status(200).send(newUser);
-      })
-      .catch(next);
-  } else {
-    next(new Error("Faltan datos obligatorios"));
+    if (!data.nombre || !data.email) {
+      return res.status(400).json({ error: "Faltan datos obligatorios" });
+    }
+
+    const createUser = await newUser(data);
+    res.status(201).json(createUser);
+  } catch (error) {
+    next(error);
   }
 };
+
+
