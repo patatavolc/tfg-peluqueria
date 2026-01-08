@@ -51,3 +51,45 @@ export const getUserByTelefono = async (telefono: string) => {
   const result = await pool.query(query, [telefono]);
   return result.rows[0];
 };
+
+export const updateUser = async (id: number, data: Partial<Usuario>) => {
+  const fields = [];
+  const values = [];
+  let paramCount = 1;
+
+  if (data.nombre) {
+    fields.push(`nombre = $${paramCount++}`);
+    values.push(data.nombre);
+  }
+  if (data.email) {
+    fields.push(`email = $${paramCount++}`);
+    values.push(data.email);
+  }
+  if (data.telefono) {
+    fields.push(`telefono = $${paramCount++}`);
+    values.push(data.telefono);
+  }
+  if (data.password) {
+    fields.push(`password = $${paramCount++}`);
+    values.push(data.password);
+  }
+  if (data.rol) {
+    fields.push(`rol = $${paramCount++}`);
+    values.push(data.rol);
+  }
+
+  if (fields.length === 0) {
+    throw new Error("No hay cambios para actualizar");
+  }
+
+  values.push(id);
+  const query = `
+    UPDATE usuarios
+    SER ${fields.join(", ")}
+    WHERE id = $${paramCount}
+    RETURNING id, nombre, email, telefono, rol, actualizado_en
+  `;
+
+  const result = await pool.query(query, values);
+  return result.rows[0];
+};
