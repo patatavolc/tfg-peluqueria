@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import type { Request, Response, NextFunction } from "express";
 import {
   newUser,
   getAllUsers,
@@ -47,7 +47,7 @@ export const getUsuarioById = async (
 ) => {
   try {
     const { id } = req.params;
-    const user = await getUserById(parseInt(id));
+    const user = await getUserById(parseInt(id as string));
 
     if (!user) {
       return res.status(404).json({ error: "Usuario no encontrado" });
@@ -60,7 +60,7 @@ export const getUsuarioById = async (
 };
 
 export const getUsuarioByEmail = async (
-  req: Request,
+  req: Request<{ email: string }>,
   res: Response,
   next: NextFunction
 ) => {
@@ -85,7 +85,7 @@ export const getUsuarioByTelefono = async (
 ) => {
   try {
     const { telefono } = req.params;
-    const user = await getUserByTelefono(telefono);
+    const user = await getUserByTelefono(telefono as string);
 
     if (!user) {
       return res.status(404).json({ error: "Usuario no encontrado" });
@@ -106,7 +106,7 @@ export const updateUsuario = async (
     const { id } = req.params;
     const data = req.body;
 
-    const updatedUser = await updateUser(parseInt(id), data);
+    const updatedUser = await updateUser(parseInt(id as string), data);
 
     if (!updatedUser) {
       return res.status(404).json({ error: "Usuario no encontrado" });
