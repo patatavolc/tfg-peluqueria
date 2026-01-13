@@ -27,10 +27,27 @@ export const newService = async (data: Servicio) => {
   RETURNING *
   `;
 
-  const values = [titulo, descripcion, precio, duracion_minutos, categoria, url_imagen];
+  const values = [
+    titulo,
+    descripcion,
+    precio,
+    duracion_minutos,
+    categoria,
+    url_imagen,
+  ];
   const result = await pool.query(query, values);
 
   return result.rows[0];
 };
 
+export const getAllServices = async () => {
+  const query = `SELECT * FROM servicios ORDER BY creado_en DESC`;
+  const result = await pool.query(query);
+  return result.rows;
+};
 
+export const getServiceById = async (id: number) => {
+  const query = `SELECT * FROM servicios WHERE id = $1`;
+  const result = await pool.query(query, [id]);
+  return result.rows[0];
+};
