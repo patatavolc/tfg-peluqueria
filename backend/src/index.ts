@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { pool, connectDB } from "./config/database";
+import { pool, connectDB } from "./config/database.ts";
 import mainRouter from "./routes/mainRouter";
 
 dotenv.config();
