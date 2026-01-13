@@ -65,3 +65,24 @@ export const getServicioById = async (
     next(error);
   }
 };
+
+export const updateServicio = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+
+    const updatedService = await updateService(parseInt(id as string), data);
+
+    if (!updatedService) {
+      return res.status(404).json({ error: "Servicio no encontrado" });
+    }
+
+    res.status(200).json(updatedService);
+  } catch (error) {
+    next(error);
+  }
+};
